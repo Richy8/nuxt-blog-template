@@ -1,0 +1,254 @@
+// ======================
+// BORDER RADIUS LIST
+// ======================
+@each $radius in $border-radius {
+  .rounded-#{$radius} {
+    border-radius: toRem($radius);
+  }
+
+  .rounded-top-#{$radius} {
+    border-radius: toRem($radius) toRem($radius) 0 0;
+  }
+
+  .rounded-bottom-#{$radius} {
+    border-radius: 0 0 toRem($radius) toRem($radius);
+  }
+}
+
+// ==========================
+// Z-INDEXING
+// ==========================
+@each $index in $z-indexes {
+  .index-#{$index} {
+    z-index: #{$index};
+  }
+
+  .index--#{$index} {
+    z-index: -#{$index};
+  }
+}
+
+// ==========================
+// CURSOR STYLES
+// ==========================
+@each $cursor in $cursors {
+  .#{$cursor} {
+    cursor: #{$cursor};
+  }
+}
+
+// ==========================
+// TEXT DECORATION STYLES
+// ==========================
+@each $decoration in $decorations {
+  .text-#{$decoration} {
+    text-decoration: #{$decoration};
+  }
+}
+
+// ==========================================
+// SELECTION AND TRANSITION AND TEXT WRAP
+// ==========================================
+.select-none {
+  user-select: none;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.smooth-transition {
+  transition: all 0.4s ease-in-out;
+}
+
+.text-no-wrap {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.text-wrap {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+// ============================
+// CENTER PLACMENT
+// ============================
+.place-center {
+  @include center-placement();
+}
+
+.place-center-x {
+  @include center-placement('x-axis');
+}
+
+.place-center-y {
+  @include center-placement('y-axis');
+}
+
+// ============================
+// BORDER SHADOW EFFECT
+// ============================
+.soft-shadow-effect {
+  box-shadow: toRem(1) toRem(-1) toRem(2) rgba(155, 161, 160, 0.3),
+    toRem(-1) toRem(1) toRem(2) rgba(157, 163, 162, 0.3);
+}
+
+.hard-shadow-effect {
+  box-shadow: toRem(1) toRem(-1) toRem(4) rgba(168, 177, 175, 0.3),
+    toRem(-1) toRem(1) toRem(4) rgba(168, 177, 175, 0.3);
+}
+
+.no-shadow {
+  box-shadow: unset !important;
+}
+
+// ===========================
+// MARGIN SPACING
+// ===========================
+@for $i from 50 through 0 {
+  .mg-#{$i} {
+    margin: toRem($i) !important;
+  }
+
+  .mgt-#{$i} {
+    margin-top: toRem($i) !important;
+  }
+
+  .mgt--#{$i} {
+    margin-top: toRem(-$i) !important;
+  }
+
+  .mgb-#{$i} {
+    margin-bottom: toRem($i) !important;
+  }
+
+  .mgb--#{$i} {
+    margin-bottom: toRem(-$i) !important;
+  }
+
+  .mgl-#{$i} {
+    margin-left: toRem($i) !important;
+  }
+
+  .mgl--#{$i} {
+    margin-left: toRem(-$i) !important;
+  }
+
+  .mgr-#{$i} {
+    margin-right: toRem($i) !important;
+  }
+
+  .mgr--#{$i} {
+    margin-right: toRem(-$i) !important;
+  }
+
+  .mgy-#{$i} {
+    margin-top: toRem($i) !important;
+    margin-bottom: toRem($i) !important;
+  }
+
+  .mgx-#{$i} {
+    margin-left: toRem($i) !important;
+    margin-right: toRem($i) !important;
+  }
+}
+
+// ==============================
+// PADDING SPACING
+// ==============================
+@for $i from 40 through 0 {
+  .pd-#{$i} {
+    padding: toRem($i) !important;
+  }
+
+  .pdt-#{$i} {
+    padding-top: toRem($i) !important;
+  }
+
+  .pdb-#{$i} {
+    padding-bottom: toRem($i) !important;
+  }
+
+  .pdl-#{$i} {
+    padding-left: toRem($i) !important;
+  }
+
+  .pdr-#{$i} {
+    padding-right: toRem($i) !important;
+  }
+
+  .pdy-#{$i} {
+    padding-top: toRem($i) !important;
+    padding-bottom: toRem($i) !important;
+  }
+
+  .pdx-#{$i} {
+    padding-left: toRem($i) !important;
+    padding-right: toRem($i) !important;
+  }
+}
+
+// =====================================
+// FONT SIZE LIST ACROSS SIZE POINTS
+// =====================================
+@for $i from 45 through 4 {
+  .f-size-#{$i} {
+    @include font-style($i, $i + 4.5);
+  }
+
+  .f-size-#{$i}-5 {
+    @include font-style(($i + 0.5), ($i + 4.5));
+  }
+}
+
+// =====================
+// UTILITY VARIABLES
+// =====================
+@each $utility-type, $utility-data in $utilities {
+  @if $utility-type == 'styles' {
+    @each $utility-data-key, $utility-data-value in $utility-data {
+      .font-#{$utility-data-key} {
+        font-style: $utility-data-value !important;
+      }
+    }
+  }
+
+  @if $utility-type == 'alignments' {
+    @each $utility-data-key, $utility-data-value in $utility-data {
+      .align-#{$utility-data-key} {
+        text-align: $utility-data-value;
+      }
+    }
+  }
+
+  @if $utility-type == 'weights' {
+    @each $utility-data-key, $utility-data-value in $utility-data {
+      .fw-#{$utility-data-key} {
+        font-weight: $utility-data-value;
+      }
+    }
+  }
+
+  @if $utility-type == 'rotation' {
+    @each $utility-data-key, $utility-data-value in $utility-data {
+      .rotate-#{$utility-data-key} {
+        transform: rotate(#{$utility-data-value}deg);
+      }
+    }
+  }
+
+  @if $utility-type == 'dimensions' {
+    @each $utility-data-key, $utility-data-value in $utility-data {
+      .wt-#{$utility-data-key} {
+        width: $utility-data-value;
+      }
+      .ht-#{$utility-data-key} {
+        height: $utility-data-value;
+      }
+    }
+  }
+}

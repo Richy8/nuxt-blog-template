@@ -1,0 +1,112 @@
+a {
+  color: $white;
+  @include font-style(14, 20);
+  // @include transition(0.1s);
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    color: $off-white;
+    text-decoration: none;
+  }
+  &:focus {
+    color: $off-white;
+    .no-touch & {
+      outline: none;
+    }
+  }
+}
+
+a:link,
+button {
+  -webkit-tap-highlight-color: rgba($off-white, 0.35);
+  -moz-tap-highlight-color: rgba($off-white, 0.35);
+}
+
+button {
+  @include width-height(auto);
+  @include transition(0.6s);
+  text-align: center;
+  box-shadow: none;
+  cursor: pointer;
+  color: inherit;
+  border: none;
+  outline: 0;
+  padding: 0;
+
+  &:focus,
+  &:visited {
+    box-shadow: unset;
+    outline: none;
+    border: none;
+  }
+  &:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    user-select: none;
+  }
+}
+
+.btn {
+  @include flex-row-wrap('center', 'center');
+  @include font-style(14.5, 19, $semibold);
+  text-decoration: none !important;
+  background-color: transparent;
+  box-shadow: 0 0 0 transparent;
+  padding: toRem(12) toRem(64);
+  @include transition(0.6s);
+  border-radius: toRem(4);
+  position: relative;
+  text-align: center;
+  max-width: 100%;
+  cursor: pointer;
+  border: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none !important;
+    box-shadow: unset;
+    outline: none;
+    border: none;
+    .no-touch & {
+      box-shadow: unset;
+      outline: none;
+      border: none;
+    }
+  }
+}
+
+// ===========================
+// BUTTON COLORS VARIANTS
+// ===========================
+.btn-primary {
+  background-color: $primary !important;
+  color: $white;
+
+  &:hover,
+  &:focus {
+    background-color: darken($primary, 7%) !important;
+  }
+
+  &:disabled {
+    background-color: lighten($primary, 7%) !important;
+  }
+}
+
+@each $color-type, $color-shades in $color-mode {
+  [data-mode='#{$color-type}'] {
+    @each $color-shade, $color in $color-shades {
+      .btn-secondary {
+        background-color: transparent;
+        border: toRem(1) solid rgba($color, 0.2);
+      }
+    }
+  }
+}
+
+.btn-secondary {
+  &:hover,
+  &:focus {
+    border: toRem(1) solid rgba($primary, 0.4);
+    color: lighten($primary, 7%) !important;
+  }
+}

@@ -1,0 +1,86 @@
+// INPUT PLACEHOLDER
+input,
+textarea {
+  &::placeholder {
+    @include generate-font-type('tertiary-2');
+    font-size: toRem(14);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+@each $color-type, $color-shades in $color-mode {
+  [data-mode='#{$color-type}'] {
+    @each $color-shade, $color in $color-shades {
+      input,
+      textarea {
+        &::placeholder {
+          color: rgba(map-get($map: $color-shades, $key: 'soft-pen'), 0.7);
+        }
+      }
+    }
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* FORM GROUP */
+.form-group {
+  margin-bottom: toRem(24);
+  position: relative;
+}
+
+// FORM INPUT STYLING
+.form-control {
+  @include generate-font-type('tertiary-2');
+  background-color: transparent !important;
+  padding: toRem(10) toRem(12);
+  @include transition(0.3s);
+  border-radius: toRem(4);
+  box-sizing: border-box;
+  vertical-align: middle;
+  position: relative;
+  box-shadow: unset;
+  overflow: hidden;
+  appearance: none;
+  width: 100%;
+  z-index: 1;
+  outline: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+
+  &:focus {
+    box-shadow: unset;
+    outline: 0;
+    border-color: rgba($primary, 0.85);
+  }
+}
+
+@each $color-type, $color-shades in $color-mode {
+  [data-mode='#{$color-type}'] {
+    @each $color-shade, $color in $color-shades {
+      .form-control {
+        border: toRem(1)
+          solid
+          rgba(map-get($map: $color-shades, $key: 'soft-pen'), 0.25);
+        color: rgba(map-get($map: $color-shades, $key: 'soft-pen'), 0.85);
+
+        &:hover {
+          border-color: $primary;
+        }
+      }
+    }
+  }
+}

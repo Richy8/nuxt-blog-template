@@ -1,0 +1,112 @@
+//=============================================
+// APPLICATION COLOR PALLETE VARIABLES
+//=============================================
+$color-mode: (
+  'light': (
+    'soft-base': $soft_base_light,
+    'hard-base': $hard_base_light,
+    'soft-pen': $soft_pen_light,
+    'hard-pen': $hard_pen_light,
+    'faded-ash': $faded_ash_light,
+  ),
+  'dark': (
+    'soft-base': $soft_base_dark,
+    'hard-base': $hard_base_dark,
+    'soft-pen': $soft_pen_dark,
+    'hard-pen': $hard_pen_dark,
+    'faded-ash': $faded_ash_dark,
+  ),
+);
+
+$color-set: (
+  'primary': $primary,
+  'white': $white,
+  'off-white': $off-white,
+  'grey': $grey,
+);
+
+$social-set: (
+  'facebook': $facebook-color,
+  'twitter': $twitter-color,
+  'linkedin': $linkedin-color,
+  'google': $google-color,
+  'youtube': $youtube-color,
+  'pinterest': $pinterest-color,
+  'dribbble': $dribbble-color,
+  'instagram': $instagram-color,
+  'whatsapp': $whatsapp-color,
+);
+
+//=========================================
+// GENERATE COLOR BASED COLOR DATA MODE
+//=========================================
+@each $color-type, $color-shades in $color-mode {
+  [data-mode='#{$color-type}'] {
+    @each $color-shade, $color in $color-shades {
+      .#{$color-shade} {
+        color: $color;
+      }
+
+      .#{$color-shade}-bg {
+        background: $color;
+      }
+
+      @each $border in $borders {
+        .#{$border}-#{$color-shade} {
+          #{$border}: 0.0625rem solid $color;
+        }
+      }
+    }
+  }
+}
+
+// ===============================================
+// GENERATE COLOR BASED COLOR NAME
+// ===============================================
+@each $color-type, $color in $color-set {
+  .#{$color-type}-text {
+    color: #{$color};
+  }
+
+  .#{$color-type}-bg {
+    background-color: #{$color};
+  }
+}
+
+// ===============================================
+// GENERATE SOCIAL BRAND COLOR BASED COLOR NAME
+// ===============================================
+@each $color-type, $color in $social-set {
+  .#{$color-type}-text {
+    color: #{$color};
+  }
+
+  .#{$color-type}-bg {
+    background-color: #{$color};
+  }
+}
+
+//====================================================
+// FUNCTION TO GENERATE COLOR NAME FROM COLOR SCHEME
+//====================================================
+@function getColor($colors, $mode, $color) {
+  @return map-get(map-get($colors, $mode), $color);
+}
+
+@mixin getColor($color_data, $color, $type: 'text') {
+  @if $color_data == 'mode' {
+    @each $color-type, $color-shades in $color-mode {
+      [data-mode='#{$color-type}'] {
+        @each $color-shade, $color in $color-shades {
+          @if $type == 'text' {
+            color: getColor($color-mode, 'light', $color);
+          }
+
+          @if $type == 'bg' {
+            background: getColor($color-mode, 'light', $color);
+          }
+        }
+      }
+    }
+  }
+}

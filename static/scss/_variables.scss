@@ -1,0 +1,103 @@
+//=====================================
+// APPLICATION COLOR VARIABLES
+//=====================================
+// !! LIGHT THEME COLORS
+$soft_base_light: #ffffff;
+$hard_base_light: #f0f1f1;
+$soft_pen_light: #626262;
+$hard_pen_light: #16161a;
+$faded_ash_light: #97979d;
+
+// !! DARK THEME COLORS
+$soft_base_dark: #202024;
+$hard_base_dark: #16161a;
+$soft_pen_dark: #c5c5c8;
+$hard_pen_dark: #f8f8fb;
+$faded_ash_dark: #aaaaaa;
+
+// !! PRIMARY COLORS
+$primary: #0a9d58;
+$white: #ffffff;
+$off-white: #cacaca;
+$grey: #d5d5da;
+
+// !! BRAND COLORS
+$facebook-color: hsla(222, 47%, 40%, 1); // #365397
+$twitter-color: hsla(198, 100%, 47%, 1); // #00a9f1
+$linkedin-color: hsla(203, 100%, 35%, 1); // #006db3
+$google-color: hsla(217, 89%, 61%, 1); // #4285f4
+$youtube-color: hsla(0, 100%, 60%, 1); // #ff3333
+$pinterest-color: hsla(0, 78%, 45%, 1); // #ce1a19
+$dribbble-color: hsla(338, 82%, 60%, 1); // #ed4584
+$instagram-color: hsla(208, 46%, 41%, 1); // #396d9a
+$whatsapp-color: hsl(142, 75%, 45%);
+
+//=====================================
+// APPLICATION BREAKPOINT VARIABLES
+//=====================================
+$xxs: 320px; // EXTRA-EXTRA SMALL SCREEN
+$xs: 450px; // EXTRA SMALL SCREEN
+$sm: 576px; // SMALL SCREEN
+$md: 768px; // MEDIUM SCREEN
+$lg: 1024px; // LARGE SCREEN
+$xl: 1280px; // EXTRA LARGE SCREEN
+$xxl: 1440px; // EXTRA EXTRA LARGE SCREEN
+$xxxl: 1620px; // EXTRA EXTRA LARGE DESKTOP SCREEN
+
+// =============================
+// FONT WEIGHT SIZE VARIANTS
+// =============================
+$thin: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+//=====================================
+// APPLICATION UTILITY VARIABLES
+//=====================================
+$borders: 'border', 'border-top', 'border-bottom', 'border-left', 'border-right';
+$border-radius: 2, 3, 4, 6, 8, 10, 12, 16, 20, 25, 30, 40;
+$z-indexes: 1, 9, 49, 99, 999, 2000, 3999, 4999;
+$cursors: 'copy', 'pointer', 'text', 'drag', 'move', 'not-allowed', 'none';
+$decorations: 'underline', 'overline', 'line-through', 'none';
+
+$utilities: (
+  'styles': (
+    'normal': 'normal',
+    'italic': 'italic',
+    'oblique': 'oblique',
+  ),
+  'alignments': (
+    'left': 'left',
+    'right': 'right',
+    'center': 'center',
+    'justify': 'justify',
+  ),
+  'weights': (
+    'thin': $thin,
+    'regular': $regular,
+    'medium': $medium,
+    'semibold': $semibold,
+    'bold': $bold,
+  ),
+  'rotation': (
+    '180': 180,
+    '90': 90,
+    '45': 45,
+    '0': 0,
+    '-90': -90,
+    '-45': -45,
+  ),
+  'dimensions': (
+    '100': 100%,
+    '75': 75%,
+    '50': 50%,
+    '25': 25%,
+    '0': 0%,
+    'auto': auto,
+    'fit': fit-content,
+    'min': min-content,
+    'max': max-content,
+  ),
+);
